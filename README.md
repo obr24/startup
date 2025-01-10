@@ -25,7 +25,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Have you ever needed a new recipe to try but didn't know what to choose? Enter RecipeBook, where you can view recipes shared by other cooks. Not sure if you will like a recipe? To get an idea of how good a recipe is you can see the number of likes other users have given other recipes in a list of all the recipes that have been submitted.
+Are you getting bored of the same old recipes? Want to impress someone with your cooking skills, but don't know what to make? Enter RecipeBook, where you can view recipes shared by other cooks and bakers like yourself. Not sure if you will like a recipe? To get an idea of how good a recipe is you can see the number of likes other users have given other recipes in a list of all the recipes that have been submitted.
 
 ### Design
 
