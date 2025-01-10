@@ -51,8 +51,8 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - Use HTML to structure the pages of the application. There will be four HTML pages: one for login, one for new recipes, one for viewing recipes, and one for the quote of the day.
 - **CSS** - Styling that is functional and nice looking. Should add to the usability of the app on all screensizes.
-- **React** - Allows for login, recipe submission, viewing recipes.
-- **Service** - Backend service will include endpoints for login, submision of recipes, retrieving recipes and retrieving quote of the day.
+- **Javascript/React** - Allows for login, recipe submission, viewing recipes.
+- **Service** - Backend service will include endpoints for login, submision of recipes, retrieving recipes and retrieving quote of the day. Will make request to a quotes API for quote of the day.
 - **DB/Login** - Stores user information; recipe title, url and submitter. Liking or submitting a recipe requires authentication.
 - **WebSocket** - Likes of recipes are updated in real-time on the view recipes page.
 
