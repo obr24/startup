@@ -19,8 +19,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [ ] Proper use of Markdown
 - [x] A concise and compelling elevator pitch - A clear elevator pitch is included that explains the purpose of this web-app
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. - An image was included that shows the basic design of the project.
 
 ### Elevator pitch
@@ -29,28 +29,31 @@ Have you ever needed a new recipe to try but didn't know what to choose? Enter R
 
 ### Design
 
+Here is the design of the frontend and the pages of the website.
+
 ![Design image](frontend-mockup.svg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Here is a basic flowchart for the backend like system.
 
 ![Backend image](backend-mockup.svg)
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- User creation and login
+- Submit recipe with title and URL
+- View list of submitted recipes and number of likes
+- Inspiration page with quote of the day
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Use HTML to structure the pages of the application. There will be four HTML pages: one for login, one for new recipes, one for viewing recipes, and one for the quote of the day.
+- **CSS** - Styling that is functional and nice looking. Should add to the usability of the app on all screensizes.
+- **React** - Allows for login, recipe submission, viewing recipes.
+- **Service** - Backend service will include endpoints for login, submision of recipes, retrieving recipes and retrieving quote of the day.
+- **DB/Login** - Stores user information; recipe title, url and submitter. Liking a recipe requires authentication.
+- **WebSocket** - Likes of recipes are updated in realtime on the view recipes page.
 
 ## 🚀 AWS deliverable
 
