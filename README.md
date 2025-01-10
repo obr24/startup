@@ -17,7 +17,7 @@ This web application gives a place where users can share recipes. Users also hav
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch - A clear elevator pitch is included that explains the purpose of this web-app
 - [x] Description of key features
 - [x] Description of how you will use each technology
