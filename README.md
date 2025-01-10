@@ -42,6 +42,7 @@ Here is a basic flowchart for the backend like system.
 - User creation and login
 - Submit recipe with title and URL
 - View list of submitted recipes and number of likes
+- Like other's submitted recipes
 - Inspiration page with quote of the day
 
 ### Technologies
@@ -52,8 +53,8 @@ I am going to use the required technologies in the following ways.
 - **CSS** - Styling that is functional and nice looking. Should add to the usability of the app on all screensizes.
 - **React** - Allows for login, recipe submission, viewing recipes.
 - **Service** - Backend service will include endpoints for login, submision of recipes, retrieving recipes and retrieving quote of the day.
-- **DB/Login** - Stores user information; recipe title, url and submitter. Liking a recipe requires authentication.
-- **WebSocket** - Likes of recipes are updated in realtime on the view recipes page.
+- **DB/Login** - Stores user information; recipe title, url and submitter. Liking or submitting a recipe requires authentication.
+- **WebSocket** - Likes of recipes are updated in real-time on the view recipes page.
 
 ## 🚀 AWS deliverable
 
