@@ -66,15 +66,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I added 4 HTML pages: Login, Submit Recipe, View Recipe, Inspiration
+- [x] **Proper HTML element usage** - I used all of the required HTML tags in the required way.
+- [x] **Links** - I added a menu on the top of each page that allows the user to navigate between pages.
+- [x] **Text** - I added the necessary text to give context for each area.
+- [x] **3rd party API placeholder** - In the quote of the day page I added a sample quote as a placeholder for the information the quotes external API will return.
+- [x] **Images** - I added an image on the quote of the day page to add cooking inspiration.
+- [x] **Login placeholder** - I added a login page. I also created a username placeholder on each page to welcome the user.
+- [x] **DB data placeholder** - I created a view recipes page with a few placeholders for the information the database will hold.
+- [x] **WebSocket placeholder** - On the view recipes page the number of likes is a placeholder for the likes that will be updated in real-time with websockets.
 
 ## 🚀 CSS deliverable
 
