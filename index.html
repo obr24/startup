@@ -38,30 +38,38 @@
             </div>
           </nav>
           <!-- end new navbar -->
+          <!-- start login container -->
     <main>
-        <h1>Login</h1>
-        <form method="get" action="view.html">
-            <div>
-                <span>email </span>
-                <input type="text" placeholder="email@example.com"/>
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-4 shadow" style="width: 350px;">
+                <h4 class="text-center mb-4">Login chat</h4>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-between">
+                        <button type="submit" class="btn btn-primary flex-grow-1">Login</button>
+                        <button type="button" class="btn btn-outline-secondary flex-grow-1">Register</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <span>password</span>
-                <input type="password" placeholder="mypassword"/>
-            </div>
-            <div>
-                <span><input type="button" value="login"></span>
-                <input type="button" value="register">
-            </div>
-        </form>
+        </div>
     </main>
-    
-    <footer>
-        <hr/>
-        <span class="text-rest">by Orion</span>
-        <br/>
-        <a href="https://github.com/obr24/startup">Github</a>
+    <!-- end login container -->
+    <!-- start footer -->
+    <footer class="navbar fixed-bottom bg-body-tertiary">
+        <div class="container">
+            <span class="text-rest">by Orion</span>
+            <br/>
+            <a href="https://github.com/obr24/startup">Github</a>
+        </div>
     </footer>
+    <!-- end footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
