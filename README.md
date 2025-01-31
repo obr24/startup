@@ -80,12 +80,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I added styling for the header, footer and main body content.
+- [x] **Navigation elements** - I did not complete this part of the deliverable.
+- [x] **Responsive to window resizing** - Updated each page to work on screens of all sizes. The view recipes page responds by wrapping items around.
+- [x] **Application elements** - All elements are updated to be readable.
+- [x] **Application text content** - Used the same fonts across the board with appropriate padding and margins.
+- [x] **Application images** - Replaced other image with quote svg and put it in a wrapper to pad it.
 
 ## 🚀 React part 1: Routing deliverable
 
