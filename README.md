@@ -81,7 +81,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **Header, footer, and main content body** - I added styling for the header, footer and main body content.
-- [x] **Navigation elements** - I did not complete this part of the deliverable.
+- [x] **Navigation elements** - Added links between all pages.
 - [x] **Responsive to window resizing** - Updated each page to work on screens of all sizes. The view recipes page responds by wrapping items around.
 - [x] **Application elements** - All elements are updated to be readable.
 - [x] **Application text content** - Used the same fonts across the board with appropriate padding and margins.
