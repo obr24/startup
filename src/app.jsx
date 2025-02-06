@@ -12,7 +12,8 @@ export default function App() {
         <BrowserRouter>
     <div className="body d-flex flex-column vh-100">
         {/* start navbar */}
-        <nav id="main-navbar" className="navbar navbar-expand-lg bg-body-tertiary">
+        {/*<nav id="main-navbar" className="navbar navbar-expand-lg bg-body-tertiary">*/}
+        <nav id="main-navbar" className="navbar navbar-expand-md bg-body-tertiary">
             <div className="container-fluid">
                 <div className="d-inline-flex flex-column">
                     <a className="navbar-brand" href="#">
@@ -20,6 +21,7 @@ export default function App() {
                     </a>
                     <div className="mt-0">Welcome, Jeff</div>
                 </div>
+        {/* Add back in when i add reactivity */}
                 {/*<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>*/}
