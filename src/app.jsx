@@ -1,9 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from './login/login';
+import { Inspiration } from './inspiration/inspiration';
+import { Submit } from './submit/submit';
+import { View } from './view/view';
 import './app.css';     // TODO remove
 
 export default function App() {
     return (
+        <BrowserRouter>
     <div className="body d-flex flex-column vh-100">
         {/* start navbar */}
         <nav id="main-navbar" className="navbar navbar-expand-lg bg-body-tertiary">
@@ -20,16 +26,16 @@ export default function App() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="fs-4 nav-link active" href="index.html">Login</a>
+                            <NavLink className="nav-link fs-4 nav-link" to="">Login</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="fs-4 nav-link" href="submit.html">Submit Recipe</a>
+                            <NavLink className="nav-link fs-4 nav-link" to="submit">Submit Recipe</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="fs-4 nav-link" href="view.html">View Recipes</a>
+                            <NavLink className="nav-link fs-4 nav-link" to="view">View Recipes</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="fs-4 nav-link" href="inspiration.html">Inspiration</a>
+                            <NavLink className="nav-link fs-4 nav-link" to="inspiration">Inspiration</NavLink>
                         </li>
                     </ul>
                 </div>
@@ -38,7 +44,13 @@ export default function App() {
         {/* end navbar */}
 
         {/* start main components */}
-        <main>App components go here</main>
+        <Routes>
+          <Route path='/' element={<Login />} exact />
+          <Route path='/submit' element={<Submit />} />
+          <Route path='/view' element={<View />} />
+          <Route path='/inspiration' element={<Inspiration />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
         {/* end main components */}
         
         {/* start footer */}
@@ -51,5 +63,10 @@ export default function App() {
         </footer>
         {/* end footer */}
     </div>
+</BrowserRouter>
     );
   }
+
+function NotFound() {
+  return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+}
