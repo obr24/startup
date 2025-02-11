@@ -10,7 +10,7 @@ import './app.css';     // TODO remove
 export default function App() {
     return (
         <BrowserRouter>
-    <div className="body d-flex flex-column vh-100">
+    <div className="body d-flex flex-column vh-100" style={{"height": "100dvh"}}>
         {/* start navbar */}
         {/*<nav id="main-navbar" className="navbar navbar-expand-lg bg-body-tertiary">*/}
         <nav id="main-navbar" className="navbar navbar-expand-md bg-body-tertiary">
