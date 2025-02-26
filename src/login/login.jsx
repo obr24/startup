@@ -1,7 +1,7 @@
 import React from 'react';
 import { Notloggedin } from './notloggedin';
 
-export function Login() {
+export function Login({setUser}) {
   return (
     <main>
       < Notloggedin />

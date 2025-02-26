@@ -8,6 +8,7 @@ import { View } from './view/view';
 import './app.css';     // TODO remove
 
 export default function App() {
+    const [user, setUser] = React.useState(localStorage.getItem('emailAddy') || null);
     return (
         <BrowserRouter>
     <div className="body d-flex flex-column vh-100" style={{"height": "100dvh"}}>
@@ -19,7 +20,7 @@ export default function App() {
                     <a className="navbar-brand" href="#">
                         <span className="fs-3 link-body-emphasis text-decoration-none">Recipe Book</span>
                     </a>
-                    <div className="mt-0">Welcome, Jeff</div>
+                    <div className="mt-0">Welcome, {user}</div>
                 </div>
         {/* Add back in when i add reactivity */}
                 {/*<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +48,7 @@ export default function App() {
 
         {/* start main components */}
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route path='/' element={<Login setUser={setUser} />} exact />
           <Route path='/submit' element={<Submit />} />
           <Route path='/view' element={<View />} />
           <Route path='/inspiration' element={<Inspiration />} />

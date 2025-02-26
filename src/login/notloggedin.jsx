@@ -1,19 +1,19 @@
 import React from "react";
 
 export function Notloggedin(properties) {
-    const [emailAddy, setEmail] = React.useState('');
+    const [emailAddy, setEmail] = React.useState(localStorage.getItem('emailAddy') || '');
     const [password, setPassword] = React.useState('');
     
     async function loginUser(e) {
         e.preventDefault();
         localStorage.setItem('emailAddy', emailAddy);
-        // properties.onLogin(emailAddy);
+        localStorage.setItem('password', password);
     }
     
     async function registerUser(e) {
         e.preventDefault();
         localStorage.setItem('emailAddy', emailAddy);
-        // properties.onLogin(emailAddy);
+        localStorage.setItem('password', password);
     }
 
     return (
