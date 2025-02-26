@@ -6,12 +6,25 @@ import { Inspiration } from './inspiration/inspiration';
 import { Submit } from './submit/submit';
 import { View } from './view/view';
 import './app.css';     // TODO remove
+import { useState, createContext, useContext } from 'react';
+import UserContext, { ProvideUserContext } from './userContext';
 
 export default function App() {
-    const [user, setUser] = React.useState(localStorage.getItem('emailAddy') || null);
     return (
+        <ProvideUserContext>
         <BrowserRouter>
-    <div className="body d-flex flex-column vh-100" style={{"height": "100dvh"}}>
+        <AppContent />
+
+</BrowserRouter>
+</ProvideUserContext>
+    );
+  }
+
+function AppContent() {
+    const {emailAddy, setEmail, authenticationState, setAuthenticationState} = useContext(UserContext);
+
+    return (
+        <div className="body d-flex flex-column vh-100" style={{"height": "100dvh"}}>
         {/* start navbar */}
         {/*<nav id="main-navbar" className="navbar navbar-expand-lg bg-body-tertiary">*/}
         <nav id="main-navbar" className="navbar navbar-expand-md bg-body-tertiary">
@@ -20,7 +33,7 @@ export default function App() {
                     <a className="navbar-brand" href="#">
                         <span className="fs-3 link-body-emphasis text-decoration-none">Recipe Book</span>
                     </a>
-                    <div className="mt-0">Welcome, {user}</div>
+                    {authenticationState && <div className="mt-0">Welcome, {emailAddy}</div>}
                 </div>
         {/* Add back in when i add reactivity */}
                 {/*<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +61,7 @@ export default function App() {
 
         {/* start main components */}
         <Routes>
-          <Route path='/' element={<Login setUser={setUser} />} exact />
+          <Route path='/' element={<Login />} exact />
           <Route path='/submit' element={<Submit />} />
           <Route path='/view' element={<View />} />
           <Route path='/inspiration' element={<Inspiration />} />
@@ -66,10 +79,8 @@ export default function App() {
         </footer>
         {/* end footer */}
     </div>
-</BrowserRouter>
-    );
-  }
-
+    )
+}
 function NotFound() {
   return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
 }

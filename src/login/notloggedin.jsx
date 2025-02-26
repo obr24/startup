@@ -1,19 +1,31 @@
 import React from "react";
+import UserContext, { ProvideUserContext } from '../userContext';
+import { useState, createContext, useContext } from "react";
 
 export function Notloggedin(properties) {
-    const [emailAddy, setEmail] = React.useState(localStorage.getItem('emailAddy') || '');
+    {/* const [emailAddy, setEmail] = React.useState(localStorage.getItem('emailAddy') || '');
+    const emailAddy = useContext(UserContext);
+    const [emailAddy, setEmail] = useContext(UserContext);
+    */}
+
+    const {emailAddy, setEmail, authenticationState, setAuthenticationState} = useContext(UserContext);
+    
     const [password, setPassword] = React.useState('');
     
     async function loginUser(e) {
         e.preventDefault();
         localStorage.setItem('emailAddy', emailAddy);
         localStorage.setItem('password', password);
+        setAuthenticationState('authenticated');
+        localStorage.setItem('authenticationState', authenticationState);
     }
     
     async function registerUser(e) {
         e.preventDefault();
         localStorage.setItem('emailAddy', emailAddy);
         localStorage.setItem('password', password);
+        setAuthenticationState('authenticated');
+        localStorage.setItem('authenticationState', authenticationState);
     }
 
     return (
