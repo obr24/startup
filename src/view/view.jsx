@@ -30,6 +30,18 @@ function MainContent() {
         localStorage.setItem('recipes', JSON.stringify(defaultRecipes));
     }
     
+    function handleServerLike(index) {
+        setRecipes(function(previousRecipes) {
+            const updatedRecipes = previousRecipes.map(function(recipe, i) {
+                if (i == index) {
+                    return { ...recipe, likes: parseInt(recipe.likes) + 1 };
+                }
+                return recipe;
+            });
+            return updatedRecipes;
+        });
+    }
+
     function handleLike(e, index) {
         e.preventDefault();
         setRecipes(function(previousRecipes) {
@@ -68,6 +80,15 @@ function MainContent() {
             </div>
         );
     }
+
+    {/* To simulate websocket */}
+    React.useEffect(() => {
+        setInterval(() => {
+            if(recipes.length > 0) {
+                handleServerLike(0);
+            }
+        }, 1000);
+    }, []);
 
     return (
         <main>
