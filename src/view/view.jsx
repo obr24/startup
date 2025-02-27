@@ -60,7 +60,7 @@ function MainContent() {
             <div className="col">
                 <div className="card shadow-sm">
                     <div className="card-body">
-                        <h5 className="card-title"><a href={recipe.url}>{recipe.title}</a></h5> {/* Can recipe.url be in quotes? */}
+                        <h5 className="card-title"><a href={recipe.url}>{recipe.title}</a></h5>
                         <p className="card-text">Submitted by {recipe.submitter}</p>
                         <span>{recipe.likes} likes</span> - <a onClick={(e) => handleLike(e, index)} href="">Like</a>
                     </div>
