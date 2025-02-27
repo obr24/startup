@@ -15,7 +15,7 @@ export class Recipe {
 
 
 export function ProvideRecipesContext({ children }) {
-    const defaultRecipes = [new Recipe('title1', 'url1', 'submitter1', 'likes1')]
+    const defaultRecipes = [new Recipe('title1', 'url1', 'submitter1', '1')]
     const [recipes, setRecipes] = React.useState(JSON.parse(localStorage.getItem('recipes')) || defaultRecipes);
 
     useEffect(() => {
