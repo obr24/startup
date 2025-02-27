@@ -63,7 +63,6 @@ function MainContent() {
                         <h5 className="card-title"><a href={recipe.url}>{recipe.title}</a></h5> {/* Can recipe.url be in quotes? */}
                         <p className="card-text">Submitted by {recipe.submitter}</p>
                         <span>{recipe.likes} likes</span> - <a onClick={(e) => handleLike(e, index)} href="">Like</a>
-                        {/* <span>{recipe.likes} likes</span> - <button onClick={() => handleLike(index)} >Like</button> */}
                     </div>
                 </div>
             </div>
@@ -72,7 +71,7 @@ function MainContent() {
 
     return (
         <main>
-        <button onClick={ loadDefaultData }>load test recipes</button>
+        {/* <button onClick={ loadDefaultData }>load test recipes</button> */}
         < ParseRecipes />
         </main>
     )
