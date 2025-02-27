@@ -99,8 +99,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Everything is mocked out. User info and recipes are stored in localstorage.
+- [x] **Hooks** - Used useState, useEffect and useContext to make everything have the same state across pages. useState was used to create the UserContext and store email address. useEffect was used to update the rendering of the recipes when there is any change. useContext was used to store the authentication state and recipes across multiple pages.
 
 ## 🚀 Service deliverable
 
