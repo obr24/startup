@@ -44,9 +44,11 @@ function AppContent() {
                         <li className="nav-item">
                             <NavLink className="nav-link fs-4 nav-link" to="">Login</NavLink>
                         </li>
+                        {authenticationState && 
                         <li className="nav-item">
                             <NavLink className="nav-link fs-4 nav-link" to="submit">Submit Recipe</NavLink>
                         </li>
+}
                         <li className="nav-item">
                             <NavLink className="nav-link fs-4 nav-link" to="view">View Recipes</NavLink>
                         </li>
