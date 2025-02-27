@@ -26,12 +26,23 @@ export function ProvideRecipesContext({ children }) {
         recipes,
         setRecipes,
         loadDefault,
+        AddRecipe,
     };
 
     function loadDefault() {
         setRecipes(defaultRecipes);
     }
     
+    function AddRecipe(title, url, submitter) {
+        let likes = '0';
+        console.log(likes);
+        let newRecipe = new Recipe(title, url, submitter, likes)
+        console.log(newRecipe);
+        let newRecipes = [...recipes, newRecipe];
+        console.log(newRecipes);
+        setRecipes(newRecipes);
+    }
+
     return (
         <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>
     );

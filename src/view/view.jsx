@@ -47,7 +47,7 @@ function MainContent() {
             <div className="col">
                 <div className="card shadow-sm">
                     <div className="card-body">
-                        <h5 className="card-title"><a href="{recipe.url}">{recipe.title}</a></h5> {/* Can recipe.url be in quotes? */}
+                        <h5 className="card-title"><a href={recipe.url}>{recipe.title}</a></h5> {/* Can recipe.url be in quotes? */}
                         <p className="card-text">Submitted by {recipe.submitter}</p>
                         <span>{recipe.likes} likes</span> - <a href="#">Like</a>
                     </div>
@@ -58,7 +58,7 @@ function MainContent() {
 
     return (
         <main>
-        <button onClick={ loadDefaultData }>load default recipes</button>
+        <button onClick={ loadDefaultData }>load test recipes</button>
         < ParseRecipes />
         </main>
     )
