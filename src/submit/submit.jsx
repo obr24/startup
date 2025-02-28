@@ -24,6 +24,8 @@ function SubmitContent() {
     async function submitRecipe(e) {
         e.preventDefault();
         AddRecipe(title, url, submitter);
+        setTitle('');
+        setURL('');
     }
     return (
         <main>
