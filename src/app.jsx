@@ -9,8 +9,6 @@ import "./app.css"; // TODO remove
 import { useState, createContext, useContext } from "react";
 import UserContext, { ProvideUserContext } from "./userContext";
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 export default function App() {
@@ -31,7 +29,6 @@ function AppContent() {
     return (
         <Navbar expand="md" className="bg-body-tertiary">
     
-      {/* <nav id="main-navbar" className="navbar navbar-expand-md bg-body-tertiary" > */}
         <div className="container-fluid">
           <div className="d-inline-flex flex-column">
             <a className="navbar-brand" href="#">
@@ -43,12 +40,7 @@ function AppContent() {
               <div className="mt-0">Welcome, {emailAddy}</div>
             )}
           </div>
-          {/* Add back in when i add reactivity */}
-          {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
         <Navbar.Collapse id="basic-navbar-nav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -75,9 +67,7 @@ function AppContent() {
               </li>
             </ul>
             </Navbar.Collapse>
-          {/* </div> */}
         </div>
-      {/*</nav>*/}
       </Navbar>
     );
   }
@@ -87,63 +77,6 @@ function AppContent() {
       style={{ height: "100dvh" }}
     >
       < NavBar />
-      {/* start navbar */}
-      {/*<nav id="main-navbar" className="navbar navbar-expand-lg bg-body-tertiary">*/}
-      {/*<nav
-        id="main-navbar"
-        className="navbar navbar-expand-md bg-body-tertiary"
-      >
-        <div className="container-fluid">
-          <div className="d-inline-flex flex-column">
-            <a className="navbar-brand" href="#">
-              <span className="fs-3 link-body-emphasis text-decoration-none">
-                Recipe Book
-              </span>
-            </a>
-            {authenticationState && (
-              <div className="mt-0">Welcome, {emailAddy}</div>
-            )}
-          </div>
-          {/* Add back in when i add reactivity */}
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink className="nav-link fs-4 nav-link" to="">
-                  Login
-                </NavLink>
-              </li>
-              {authenticationState && (
-                <li className="nav-item">
-                  <NavLink className="nav-link fs-4 nav-link" to="submit">
-                    Submit Recipe
-                  </NavLink>
-                </li>
-              )}
-              <li className="nav-item">
-                <NavLink className="nav-link fs-4 nav-link" to="view">
-                  View Recipes
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link fs-4 nav-link" to="inspiration">
-                  Inspiration
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav> */}
       {/* end navbar */}
 
       {/* start main components */}
