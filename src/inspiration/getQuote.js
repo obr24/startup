@@ -1,18 +1,12 @@
 export default function getQuote() {
-  console.log("hi");
-  var ret = [
-    {
-      q: "Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.",
-      a: "Kanye West",
-      h: "<blockquote>&ldquo;Remember that sometimes not getting what you want is a wonderful stroke of luck.&rdquo; &mdash; <footer>Dalai Lama</footer></blockquote>",
-    },
-  ];
-  console.log(ret);
-  return [
-    {
-      q: "Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.",
-      a: "Kanye West",
-      h: "<blockquote>&ldquo;Remember that sometimes not getting what you want is a wonderful stroke of luck.&rdquo; &mdash; <footer>Dalai Lama</footer></blockquote>",
-    },
-  ];
+  return fetch('https://quote.cs260.click')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error getting quote: ", error);
+      return { quote: "bad quote", author: "bad author return" };
+    });
 }
