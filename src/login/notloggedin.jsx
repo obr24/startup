@@ -14,11 +14,6 @@ export function Notloggedin(properties) {
     
     async function loginUser(e) {
         loginOrCreate('/api/login/');
-        // e.preventDefault();
-        // localStorage.setItem('emailAddy', emailAddy);
-        // localStorage.setItem('password', password);
-        // setAuthenticationState('authenticated');
-        // localStorage.setItem('authenticationState', authenticationState);
     }
     
     async function loginOrCreate(endpoint) {
@@ -40,11 +35,6 @@ export function Notloggedin(properties) {
      
     async function registerUser(e) {
         loginOrCreate('/api/register/');
-        // e.preventDefault();
-        // localStorage.setItem('emailAddy', emailAddy);
-        // localStorage.setItem('password', password);
-        // setAuthenticationState('authenticated');
-        // localStorage.setItem('authenticationState', authenticationState);
     }
 
     return (
