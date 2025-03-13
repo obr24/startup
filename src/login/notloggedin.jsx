@@ -13,7 +13,7 @@ export function Notloggedin(properties) {
     const [password, setPassword] = React.useState('');
     
     async function loginUser(e) {
-        loginOrCreate('/api/login/')
+        loginOrCreate('/api/login/');
         // e.preventDefault();
         // localStorage.setItem('emailAddy', emailAddy);
         // localStorage.setItem('password', password);
@@ -30,8 +30,8 @@ export function Notloggedin(properties) {
           },
         });
         if (response?.status === 200) {
-          localStorage.setItem('userName', userName);
-          props.onLogin(userName);
+          localStorage.setItem('emailAddy', emailAddy);
+          setAuthenticationState('authenticated');
         } else {
           const body = await response.json();
           console.log(`⚠ Error: ${body.msg}`);
@@ -39,7 +39,7 @@ export function Notloggedin(properties) {
       }
      
     async function registerUser(e) {
-        loginOrCreate('/api/register/')
+        loginOrCreate('/api/register/');
         // e.preventDefault();
         // localStorage.setItem('emailAddy', emailAddy);
         // localStorage.setItem('password', password);
