@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
+const cookieParser = require('cookie-parser');
 const app = express();
 
 let users = [];
@@ -12,7 +13,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());
 
-// TODO: add cookie parser here.
+app.use(cookieParser());
 
 app.use(express.static("public"));
 
@@ -68,7 +69,7 @@ apiRouter.delete('/logout', async (req, res) => {
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
-})
+});
 
 app.get("*", (req, res) => {
   res.send("<h1>this is anything else</h1>");
@@ -104,10 +105,6 @@ function setAuthCookie(res, authToken) {
         samSite: 'strict',
     });
 }
-
-// app.use((_req, res) => {
-//     res.sendFile('index.html', { root: 'public' });
-// })
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
