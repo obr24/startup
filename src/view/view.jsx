@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import RecipesContext, {ProvideRecipesContext, Recipe} from '../recipes';
 
@@ -13,25 +13,16 @@ export function View() {
 function MainContent() {
     const {recipes,
         setRecipes,
-        loadDefault
+        LoadRecipes,
         } = useContext(RecipesContext);
 
-    const defaultRecipes = [new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50'),
-       new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50'),
-      new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50'),
-      new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50'),
-      new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50'),
-      new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50'),
-      new Recipe('Gmas cookies', 'https://example.com/gmas_cookies', 'Megan', '50')  
-    ]
+    useEffect(() => {
+        LoadRecipes();
+    }, [])
 
-    function loadDefaultData() {
-        setRecipes(defaultRecipes);
-        localStorage.setItem('recipes', JSON.stringify(defaultRecipes));
-    }
-    
     function handleServerLike(index) {
         setRecipes(function(previousRecipes) {
+            try {
             const updatedRecipes = previousRecipes.map(function(recipe, i) {
                 if (i == index) {
                     return { ...recipe, likes: parseInt(recipe.likes) + 1 };
@@ -39,6 +30,9 @@ function MainContent() {
                 return recipe;
             });
             return updatedRecipes;
+        } catch (error) {
+            return error.toString();
+        }
         });
     }
 
@@ -54,14 +48,27 @@ function MainContent() {
             return updatedRecipes;
         });
     }
+
+    function RecipesHTML() {
+        const random = "hielsd";
+        try {
+            if (recipes.length > 0) {
+            return recipes.map((recipe, index) => (
+                <ParseRecipe key={index} recipe={recipe} index={index} handleLike={handleLike}/>
+            ))
+        } else {
+            return <div>`${random}`</div>
+        }
+        } catch (error) {
+            return <h1>{error.toString()}</h1> // TODO: remove before submitting
+        }
+    }
     
     function ParseRecipes() {
         return (
             <div className="container mt-3 mb-5">
             <div className="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-4">
-            {recipes.map((recipe, index) => (
-                <ParseRecipe key={index} recipe={recipe} index={index} handleLike={handleLike}/>
-            ))}
+            < RecipesHTML />
             </div>
             </div>
         );
