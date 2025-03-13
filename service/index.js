@@ -7,6 +7,15 @@ const app = express();
 let users = [];
 let recipes = [];
 
+class Recipe {
+    constructor(title, url, submitter, likes) {
+        this.title = title;
+        this.url = url;
+        this.submitter = submitter;
+        this.likes = likes;
+    }
+}
+
 const authCookieName = "cookieToken";
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -19,6 +28,32 @@ app.use(express.static("public"));
 
 var apiRouter = express.Router();
 app.use("/api", apiRouter);
+
+const checkAuth = async(req, res, next) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if (user) {
+        next();
+    } else {
+        res.status(401).send({ msg: 'Unauthorized' });
+    }
+};
+
+apiRouter.post("/submit", checkAuth, async (req, res) => {
+    try {
+    AddRecipe(req.body.title, req.body.url, req.body.submitter);
+    res.send({ msg: "worked" });
+    } catch (error) {
+        res.send({ msg: "didn't work" });
+    }
+});
+
+function AddRecipe(title, url, submitter) {
+        const likes = '0';
+        console.log(likes);
+        let newRecipe = new Recipe(title, url, submitter, likes)
+        console.log(newRecipe);
+        recipes = [...recipes, newRecipe];
+    }
 
 apiRouter.post("/register", async (req, res) => {
   if (await findUser("email", req.body.email)) {
