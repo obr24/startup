@@ -13,10 +13,8 @@ export class Recipe {
     }
 }
 
-
 export function ProvideRecipesContext({ children }) {
-    const defaultRecipes = [new Recipe('title1', 'url1', 'submitter1', '1')]
-    const [recipes, setRecipes] = React.useState(JSON.parse(localStorage.getItem('recipes')) || defaultRecipes);
+    const [recipes, setRecipes] = React.useState(JSON.parse(localStorage.getItem('recipes')));
 
     useEffect(() => {
         localStorage.setItem('recipes', JSON.stringify(recipes));
@@ -25,14 +23,10 @@ export function ProvideRecipesContext({ children }) {
     const value = {
         recipes,
         setRecipes,
-        loadDefault,
         AddRecipe,
+        LoadRecipes,
     };
 
-    function loadDefault() {
-        setRecipes(defaultRecipes);
-    }
-    
     async function AddRecipe(title, url, submitter) {
         const response = await fetch('/api/submit', {
             method: 'post',
@@ -45,17 +39,29 @@ export function ProvideRecipesContext({ children }) {
             console.log('recipe added');
         } else {
             const body = await response.json();
-            console.log(`Error submitting: ${body.msg}`)
+            console.log(`Error submitting: ${body.msg}`);
         }
     }
+
+    async function LoadRecipes() {
+        const response = await fetch('/api/recipes', {
+            method: 'get',
+    });
+        if (response?.status === 200) {
+            console.log('recipes received');
+            const body = await response.json();
+            setRecipes(body);
+        } else {
+            const body = await response.json();
+            console.log(`Error submitting: ${body.msg}`);
+            setRecipes('{}');
+        }
+}
+
+
 
     return (
         <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>
     );
 }
-{/*
-export function loadDefault() {
-    setRecipes(defaultRecipes);
-}
-*/}
 export default RecipesContext;
