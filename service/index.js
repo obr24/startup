@@ -9,6 +9,7 @@ let recipes = [];
 
 class Recipe {
     constructor(title, url, submitter, likes) {
+        this.id = uuid.v4();
         this.title = title;
         this.url = url;
         this.submitter = submitter;
@@ -54,6 +55,14 @@ function AddRecipe(title, url, submitter) {
         console.log(newRecipe);
         recipes = [...recipes, newRecipe];
     }
+
+apiRouter.get("/recipes", checkAuth, async (req, res) => {
+    try {
+        res.send(JSON.stringify(recipes));
+    } catch (error) {
+        res.send({ msg: "couldn't send 🤷"});
+    }
+})
 
 apiRouter.post("/register", async (req, res) => {
   if (await findUser("email", req.body.email)) {
