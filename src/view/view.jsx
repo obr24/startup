@@ -36,6 +36,23 @@ function MainContent() {
         });
     }
 
+    async function handleLike(e, id) {
+        e.preventDefault();
+        const response = await fetch('/api/like', {
+            method: 'post',
+            body: JSON.stringify({ id: id }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            LoadRecipes();
+        } else {
+            const body = await response.json();
+            console.log(`Error: ${body.msg}`);
+        }
+    }
+{/*
     function handleLike(e, index) {
         e.preventDefault();
         setRecipes(function(previousRecipes) {
@@ -48,9 +65,10 @@ function MainContent() {
             return updatedRecipes;
         });
     }
+    */}
 
     function RecipesHTML() {
-        const random = "hielsd";
+        const random = "not any recipes";
         try {
             if (recipes.length > 0) {
             return recipes.map((recipe, index) => (
@@ -81,7 +99,8 @@ function MainContent() {
                     <div className="card-body">
                         <h5 className="card-title"><a href={recipe.url}>{recipe.title}</a></h5>
                         <p className="card-text">Submitted by {recipe.submitter}</p>
-                        <span>{recipe.likes} likes</span> - <a onClick={(e) => handleLike(e, index)} href="">Like</a>
+                        <span>{recipe.likes} likes</span> - <a onClick={(e) => handleLike(e, recipe.id)} href="">Like</a>
+                        <pre>{recipe.id}</pre>
                     </div>
                 </div>
             </div>
