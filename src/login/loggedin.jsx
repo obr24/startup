@@ -20,14 +20,6 @@ export function Loggedin(properties) {
                 setAuthenticationState('');
                 setEmail('');
             })
-
-        
-        // setEmail('');
-        // localStorage.setItem('emailAddy', emailAddy);
-        // setPassword('');
-        // localStorage.setItem('password', password);
-        // setAuthenticationState('');
-        // localStorage.setItem('authenticationState', authenticationState);
     }
     
     return (
