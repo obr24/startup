@@ -9,12 +9,25 @@ export function Loggedin(properties) {
     
     async function logoutUser(e) {
         e.preventDefault();
-        setEmail('');
-        localStorage.setItem('emailAddy', emailAddy);
-        setPassword('');
-        localStorage.setItem('password', password);
-        setAuthenticationState('');
-        localStorage.setItem('authenticationState', authenticationState);
+        
+        fetch('/api/logout', {
+            method: 'delete',
+        })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setAuthenticationState('');
+                setEmail('');
+            })
+
+        
+        // setEmail('');
+        // localStorage.setItem('emailAddy', emailAddy);
+        // setPassword('');
+        // localStorage.setItem('password', password);
+        // setAuthenticationState('');
+        // localStorage.setItem('authenticationState', authenticationState);
     }
     
     return (
