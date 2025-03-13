@@ -33,14 +33,20 @@ export function ProvideRecipesContext({ children }) {
         setRecipes(defaultRecipes);
     }
     
-    function AddRecipe(title, url, submitter) {
-        let likes = '0';
-        console.log(likes);
-        let newRecipe = new Recipe(title, url, submitter, likes)
-        console.log(newRecipe);
-        let newRecipes = [...recipes, newRecipe];
-        console.log(newRecipes);
-        setRecipes(newRecipes);
+    async function AddRecipe(title, url, submitter) {
+        const response = await fetch('/api/submit', {
+            method: 'post',
+            body: JSON.stringify({ title: title, url: url, submitter: submitter }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            console.log('recipe added');
+        } else {
+            const body = await response.json();
+            console.log(`Error submitting: ${body.msg}`)
+        }
     }
 
     return (
