@@ -27,6 +27,7 @@ function SubmitContent() {
         setTitle('');
         setURL('');
     }
+
     return (
         <main>
                 <div className="container mt-5 d-flex justify-content-center bp-5 mb-5">
