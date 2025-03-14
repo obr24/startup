@@ -29,7 +29,7 @@ function MainContent() {
             try {
         e.preventDefault();
             } catch (error) {
-                console.log("error with event");
+                console.log("no event to prevent default on (normal if this is called by the temp websocket end)");
             }
         const response = await fetch('/api/like', {
             method: 'post',
