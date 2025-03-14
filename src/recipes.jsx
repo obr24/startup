@@ -4,6 +4,8 @@ import UserContext from './userContext';
 
 const RecipesContext = createContext();
 
+{/* let recipes = []; */}
+
 export class Recipe {
     constructor(title, url, submitter, likes) {
         this.title = title;
@@ -14,7 +16,23 @@ export class Recipe {
 }
 
 export function ProvideRecipesContext({ children }) {
-    const [recipes, setRecipes] = React.useState(JSON.parse(localStorage.getItem('recipes')));
+    {/* const [recipes, setRecipes] = React.useState(JSON.parse(localStorage.getItem('recipes') || [])); */}
+    const [recipes, setRecipes] = React.useState(() => {
+        try {
+            const storedRecipes = localStorage.getItem('recipes');
+            return storedRecipes ? JSON.parse(storedRecipes) : [];
+        } catch (error) {
+            console.log("error parsing recipes from local storage", error);
+            return [];
+        }
+    });
+    
+    
+    {/* todo: check to make sure this is doing what it's supposed to!!! */}
+ 
+    {/*useEffect(() => {
+        setRecipes([]);
+    }, []); */}
 
     useEffect(() => {
         localStorage.setItem('recipes', JSON.stringify(recipes));
@@ -54,7 +72,7 @@ export function ProvideRecipesContext({ children }) {
         } else {
             const body = await response.json();
             console.log(`Error submitting: ${body.msg}`);
-            setRecipes('{}');
+            setRecipes([]);
         }
 }
 
