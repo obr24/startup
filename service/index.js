@@ -25,10 +25,10 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 var apiRouter = express.Router();
-app.use("/api", apiRouter);
+app.use(`/api`, apiRouter);
 
 const checkAuth = async(req, res, next) => {
     const user = await findUser('token', req.cookies[authCookieName]);
@@ -129,11 +129,15 @@ apiRouter.delete('/logout', async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.send("<h1>this is anything else</h1>");
+  res.status(404).end(); //send("<h1>this is anything else</h1>");
 });
 
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
+});
+
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
 });
 
 async function createUser(email, password) {
