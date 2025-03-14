@@ -128,16 +128,16 @@ apiRouter.delete('/logout', async (req, res) => {
     res.status(204).end();
 });
 
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+
 app.get("*", (req, res) => {
   res.status(404).end(); //send("<h1>this is anything else</h1>");
 });
 
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
-});
-
-app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
 });
 
 async function createUser(email, password) {

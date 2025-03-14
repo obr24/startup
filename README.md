@@ -106,11 +106,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Installed Express with NPM. Now a backend and frontend server are running.
+- [x] **Static middleware for frontend** - There are different jsx pages stored to display the frontend with a router to display the proper urls.
+- [x] **Calls to third party endpoints** - The inspiration makes a call to an external quotes api from the frontend.
+- [x] **Backend service endpoints** - "/api/..." is the path to the endpoints for login, retrieving recipes, liking a recipe, etc.
+- [x] **Frontend calls service endpoints** - Frontend buttons make calls to the backend endpoints to register new users, handle login, submit new recipes and send likes made on recipes.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Registration, login, logout all work. There is a cookie saved on registration/login that is required in order to like a recipe or view submitted recipes.
 
 ## 🚀 DB/Login deliverable
 
