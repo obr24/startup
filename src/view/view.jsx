@@ -20,26 +20,8 @@ function MainContent() {
         LoadRecipes();
     }, [])
 
-    // function handleServerLike(index) {
-    //     setRecipes(function(previousRecipes) {
-    //         try {
-    //         const updatedRecipes = previousRecipes.map(function(recipe, i) {
-    //             if (i == index) {
-    //                 return { ...recipe, likes: parseInt(recipe.likes) + 1 };
-    //             }
-    //             return recipe;
-    //         });
-    //         return updatedRecipes;
-    //     } catch (error) {
-    //         return error.toString();
-    //     }
-    //     });
-    // }
-
     function handleServerLike() {
-        setRecipes(function(previousRecipes) {
-                LoadRecipes();
-        });
+        LoadRecipes();
     }
 
     async function handleLike(e, id) {
@@ -100,7 +82,6 @@ function MainContent() {
                         <h5 className="card-title"><a href={recipe.url}>{recipe.title}</a></h5>
                         <p className="card-text">Submitted by {recipe.submitter}</p>
                         <span>{recipe.likes} likes</span> - <a onClick={(e) => handleLike(e, recipe.id)} href="">Like</a>
-                        <pre>{recipe.id}</pre>
                     </div>
                 </div>
             </div>
@@ -114,12 +95,11 @@ function MainContent() {
                 handleLike(undefined, recipes[0].id);
                 handleServerLike();
             }
-        }, 1000);
+        }, 3000);
     }, []);
 
     return (
         <main>
-        {/* <button onClick={ loadDefaultData }>load test recipes</button> */}
         < ParseRecipes />
         </main>
     )
