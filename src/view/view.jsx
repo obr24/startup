@@ -20,24 +20,35 @@ function MainContent() {
         LoadRecipes();
     }, [])
 
-    function handleServerLike(index) {
+    // function handleServerLike(index) {
+    //     setRecipes(function(previousRecipes) {
+    //         try {
+    //         const updatedRecipes = previousRecipes.map(function(recipe, i) {
+    //             if (i == index) {
+    //                 return { ...recipe, likes: parseInt(recipe.likes) + 1 };
+    //             }
+    //             return recipe;
+    //         });
+    //         return updatedRecipes;
+    //     } catch (error) {
+    //         return error.toString();
+    //     }
+    //     });
+    // }
+
+    function handleServerLike() {
         setRecipes(function(previousRecipes) {
-            try {
-            const updatedRecipes = previousRecipes.map(function(recipe, i) {
-                if (i == index) {
-                    return { ...recipe, likes: parseInt(recipe.likes) + 1 };
-                }
-                return recipe;
-            });
-            return updatedRecipes;
-        } catch (error) {
-            return error.toString();
-        }
+                LoadRecipes();
         });
     }
 
     async function handleLike(e, id) {
+        try {
+            try {
         e.preventDefault();
+            } catch (error) {
+                console.log("error with event");
+            }
         const response = await fetch('/api/like', {
             method: 'post',
             body: JSON.stringify({ id: id }),
@@ -51,34 +62,23 @@ function MainContent() {
             const body = await response.json();
             console.log(`Error: ${body.msg}`);
         }
+    } catch (error) {
+        console.log("error handling like");
     }
-{/*
-    function handleLike(e, index) {
-        e.preventDefault();
-        setRecipes(function(previousRecipes) {
-            const updatedRecipes = previousRecipes.map(function(recipe, i) {
-                if (i == index) {
-                    return { ...recipe, likes: parseInt(recipe.likes) + 1 };
-                }
-                return recipe;
-            });
-            return updatedRecipes;
-        });
     }
-    */}
 
     function RecipesHTML() {
         const random = "not any recipes";
         try {
-            if (recipes.length > 0) {
+            if (recipes != undefined && recipes.length > 0) {
             return recipes.map((recipe, index) => (
                 <ParseRecipe key={index} recipe={recipe} index={index} handleLike={handleLike}/>
             ))
         } else {
-            return <div>`${random}`</div>
+            return [];
         }
         } catch (error) {
-            return <h1>{error.toString()}</h1> // TODO: remove before submitting
+            console.log("error in recipeshtml:", error);
         }
     }
     
@@ -111,7 +111,8 @@ function MainContent() {
     React.useEffect(() => {
         setInterval(() => {
             if(recipes.length > 0) {
-                handleServerLike(0);
+                handleLike(undefined, recipes[0].id);
+                handleServerLike();
             }
         }, 1000);
     }, []);
