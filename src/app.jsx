@@ -55,11 +55,13 @@ function AppContent() {
                   </NavLink>
                 </li>
               )}
+              {authenticationState && (
               <li className="nav-item">
                 <NavLink className="nav-link fs-4 nav-link" to="view">
                   View Recipes
                 </NavLink>
               </li>
+              )}
               <li className="nav-item">
                 <NavLink className="nav-link fs-4 nav-link" to="inspiration">
                   Inspiration
