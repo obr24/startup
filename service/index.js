@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const uuid = require("uuid");
 const cookieParser = require('cookie-parser');
 const app = express();
+const DB = require('./database.js');
 
 let users = [];
 let recipes = [];
@@ -82,7 +83,6 @@ apiRouter.post("/register", async (req, res) => {
     res.status(409).send({ msg: "User already exists" });
   } else {
     let user;
-    // TODO: first check if user already existsuserName
     try {
       console.log("trying..");
       user = await createUser(req.body.email, req.body.password);
