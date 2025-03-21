@@ -152,7 +152,8 @@ async function createUser(email, password) {
     password: hashedPassword,
     token: uuid.v4(),
   };
-  users.push(user);
+  //users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
