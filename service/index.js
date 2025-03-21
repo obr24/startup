@@ -42,12 +42,8 @@ const checkAuth = async(req, res, next) => {
 
 apiRouter.post("/like", checkAuth, async (req, res) => {
     try {
-        recipes.forEach(recipe => {
-            if (recipe.id === req.body.id) {
-                recipe.likes = parseInt(recipe.likes) + 1;
-                res.send({ msg: 'like received' });
-            }
-        });
+      await addLike(req.body.id);
+      res.send({msg: 'like received' });
     } catch (error) {
         res.send( {msg: error} );
     }
@@ -169,6 +165,10 @@ async function findUser(field, value) {
   } else {
     console.error("big error in index.js in find user?");
   }
+}
+
+async function addLike(id) {
+  return DB.likeRecipe(id);
 }
 
 function setAuthCookie(res, authToken) {
