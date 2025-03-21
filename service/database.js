@@ -26,5 +26,29 @@ function getUserByToken(token) {
 }
 
 async function updateUser(user) {
-    await userCollection.updateOne({ email: user.email }, { $set: user });
+    const query = { _id: user._id };
+    const replacement = user;
+    await userCollection.replaceOne(query, replacement);
+}
+
+async function addUser(user) {
+    await userCollection.insertOne(user);
+}
+
+async function addRecipe(recipe) {
+    await recipeCollection.insertOne(recipe);
+}
+
+async function getRecipes() {
+    return await recipeCollection.find({}).toArray();
+    //return await recipeCollection.find({});
+}
+
+module.exports = {
+    getUser,
+    getUserByToken,
+    addUser,
+    updateUser,
+    addRecipe,
+    getRecipes,
 }
