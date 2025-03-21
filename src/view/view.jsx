@@ -89,14 +89,14 @@ function MainContent() {
     }
 
     {/* To simulate websocket */}
-    React.useEffect(() => {
+    {/* React.useEffect(() => {
         setInterval(() => {
             if(recipes.length > 0) {
                 handleLike(undefined, recipes[0].id);
                 handleServerLike();
             }
-        }, 3000);
-    }, []);
+        }, 30000);
+    }, []); */}
 
     return (
         <main>
