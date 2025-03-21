@@ -161,7 +161,14 @@ async function createUser(email, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  //return users.find((u) => u[field] === value);
+  if (field === "token") {
+    return DB.getUserByToken(value);
+  } else if (field === "email") {
+    return DB.getUser(value);
+  } else {
+    console.error("big error in index.js in find user?");
+  }
 }
 
 function setAuthCookie(res, authToken) {
