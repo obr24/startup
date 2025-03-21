@@ -67,7 +67,8 @@ function AddRecipe(title, url, submitter) {
         console.log(likes);
         let newRecipe = new Recipe(title, url, submitter, likes)
         console.log(newRecipe);
-        recipes = [...recipes, newRecipe];
+        // recipes = [...recipes, newRecipe];
+        DB.addRecipe(newRecipe);
     }
 
 apiRouter.get("/recipes", checkAuth, async (req, res) => {
