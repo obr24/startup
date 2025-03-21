@@ -73,7 +73,8 @@ function AddRecipe(title, url, submitter) {
 
 apiRouter.get("/recipes", checkAuth, async (req, res) => {
     try {
-        res.send(JSON.stringify(recipes));
+      const curRecipes = await DB.getRecipes();
+        res.send(JSON.stringify(curRecipes));
     } catch (error) {
         res.send({ msg: "couldn't send 🤷"});
     }
