@@ -41,7 +41,10 @@ async function addRecipe(recipe) {
 
 async function getRecipes() {
     return await recipeCollection.find({}).toArray();
-    //return await recipeCollection.find({});
+}
+
+async function likeRecipe(id) {
+    await recipeCollection.updateOne( {id: id}, {$inc: { likes: 1 } } );
 }
 
 module.exports = {
@@ -51,4 +54,5 @@ module.exports = {
     updateUser,
     addRecipe,
     getRecipes,
+    likeRecipe,
 }
