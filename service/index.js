@@ -63,7 +63,7 @@ apiRouter.post("/submit", checkAuth, async (req, res) => {
 });
 
 function AddRecipe(title, url, submitter) {
-        const likes = '0';
+        const likes = 0;
         console.log(likes);
         let newRecipe = new Recipe(title, url, submitter, likes)
         console.log(newRecipe);
