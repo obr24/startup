@@ -102,6 +102,7 @@ apiRouter.post("/login", async (req, res) => {
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) { // todo: is this the hashed pw?
             user.token = uuid.v4();
+            DB.updateUser(user);
             setAuthCookie(res, user.token);
             res.send({email: user.email });
             return;
