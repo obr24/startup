@@ -11,15 +11,13 @@ export function Notloggedin(properties) {
     const {emailAddy, setEmail, authenticationState, setAuthenticationState} = useContext(UserContext);
     
     const [password, setPassword] = React.useState('');
-    
-    async function loginUser(e) {
-        loginOrCreate('/api/login/');
-    }
-    
+
     async function loginOrCreate(endpoint) {
+        try {
+            const body = JSON.stringify({ email: emailAddy, password: password });
         const response = await fetch(endpoint, {
           method: 'post',
-          body: JSON.stringify({ email: emailAddy, password: password }),
+          body: body,
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
@@ -31,9 +29,18 @@ export function Notloggedin(properties) {
           const body = await response.json();
           console.log(`⚠ Error: ${body.msg}`);
         }
+    } catch (error) {
+        console.error(`Error: ${error}`);
+    }
       }
      
+    async function loginUser(e) {
+        e.preventDefault();
+        loginOrCreate('/api/login/');
+    }
+    
     async function registerUser(e) {
+        e.preventDefault();
         loginOrCreate('/api/register/');
     }
 
