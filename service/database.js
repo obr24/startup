@@ -18,7 +18,7 @@ const recipeCollection = db.collection('recipe');
 })();
 
 function getUser(email) {
-    return userCollection.findOne({ email: email });
+    return userCollection.findOne({ email: { $eq: email } });
 }
 
 function getUserByToken(token) {

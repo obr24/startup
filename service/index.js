@@ -32,12 +32,16 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 const checkAuth = async(req, res, next) => {
+  try {
     const user = await findUser('token', req.cookies[authCookieName]);
     if (user) {
         next();
     } else {
         res.status(401).send({ msg: 'Unauthorized' });
     }
+  } catch (error) {
+    res.status(500).send({msg: error});
+  }
 };
 
 apiRouter.post("/like", checkAuth, async (req, res) => {
@@ -77,6 +81,7 @@ apiRouter.get("/recipes", checkAuth, async (req, res) => {
 })
 
 apiRouter.post("/register", async (req, res) => {
+  try {
   if (await findUser("email", req.body.email)) {
     res.status(409).send({ msg: "User already exists" });
   } else {
@@ -90,6 +95,9 @@ apiRouter.post("/register", async (req, res) => {
     setAuthCookie(res, user.token);
     res.send({ email: user.email });
   }
+} catch (error) {
+  res.send({msg: error});
+}
 });
 
 apiRouter.post("/login", async (req, res) => {
@@ -111,14 +119,19 @@ apiRouter.post("/login", async (req, res) => {
 });
 
 apiRouter.get("/quote", (req, res) => {
+  try {
   fetch("https://quote.cs260.click")
     .then((response) => response.json())
     .then((data) => {
       res.send(data);
     });
+  } catch (error) {
+    res.status(500).send({ msg: error });
+  }
 });
 
 apiRouter.delete('/logout', async (req, res) => {
+  try {
     const user = await findUser('token', req.cookies[authCookieName]);
     if (user) {
         delete user.token;
@@ -126,6 +139,9 @@ apiRouter.delete('/logout', async (req, res) => {
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
+  } catch (error) {
+    res.status(500).send({msg: error});
+  }
 });
 
 app.use((_req, res) => {
