@@ -105,6 +105,9 @@ apiRouter.post("/register", async (req, res) => {
 
 apiRouter.post("/login", async (req, res) => {
     try {
+  if (req.body.email === "" || req.body.password === "") {
+    res.status(409).send({ msg: "username or password blank" });
+  }
     const user = await findUser('email', req.body.email);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) { // todo: is this the hashed pw?
