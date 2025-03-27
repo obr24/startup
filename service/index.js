@@ -82,7 +82,10 @@ apiRouter.get("/recipes", checkAuth, async (req, res) => {
 
 apiRouter.post("/register", async (req, res) => {
   try {
-  if (await findUser("email", req.body.email)) {
+  if (req.body.email === "" || req.body.password === "") {
+    res.status(409).send({ msg: "username or password blank" });
+  }
+  else if (await findUser("email", req.body.email)) {
     res.status(409).send({ msg: "User already exists" });
   } else {
     let user;
