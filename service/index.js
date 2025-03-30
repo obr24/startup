@@ -5,8 +5,6 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const DB = require('./database.js');
 
-let users = [];
-let recipes = [];
 
 class Recipe {
     constructor(title, url, submitter, likes) {
