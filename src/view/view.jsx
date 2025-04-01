@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
 import RecipesContext, {ProvideRecipesContext, Recipe} from '../recipes';
+import { LikeEvent, LikeNotifier } from './likeNotifier';
 
 export function View() {
   return (
@@ -17,10 +18,16 @@ function MainContent() {
         } = useContext(RecipesContext);
 
     useEffect(() => {
+        LikeNotifier.addHandler(handleServerLike);
+        
         LoadRecipes();
-    }, [])
+        
+        return () => {
+            LikeNotifier.removeHandler(handleServerLike);
+        };
+    }, []);
 
-    function handleServerLike() {
+    function handleServerLike(event) {
         LoadRecipes();
     }
 
@@ -29,7 +36,7 @@ function MainContent() {
             try {
         e.preventDefault();
             } catch (error) {
-                console.log("no event to prevent default on (normal if this is called by the temp websocket end)");
+                console.log("no event to prevent default on. (normal if this is called by the temp websocket end)");
             }
         const response = await fetch('/api/like', {
             method: 'post',
@@ -39,18 +46,18 @@ function MainContent() {
             },
         });
         if (response?.status === 200) {
-            LoadRecipes();
+            LikeNotifier.broadcastEvent("blank", LikeEvent.NewLike);
+            LoadRecipes(); // TODO: remove double load recipes
         } else {
             const body = await response.json();
             console.log(`Error: ${body.msg}`);
         }
     } catch (error) {
-        console.log("error handling like");
+        console.log("error handling like: ", error);
     }
     }
 
     function RecipesHTML() {
-        const random = "not any recipes";
         try {
             if (recipes != undefined && recipes.length > 0) {
             return recipes.map((recipe, index) => (

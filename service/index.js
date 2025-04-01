@@ -4,7 +4,7 @@ const uuid = require("uuid");
 const cookieParser = require('cookie-parser');
 const app = express();
 const DB = require('./database.js');
-
+const { peerProxy } = require('./peerProxy.js');
 
 class Recipe {
     constructor(title, url, submitter, likes) {
@@ -199,6 +199,8 @@ function setAuthCookie(res, authToken) {
     });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
