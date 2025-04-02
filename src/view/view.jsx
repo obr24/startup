@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 
 import RecipesContext, {ProvideRecipesContext, Recipe} from '../recipes';
-// import { LikeEvent, LikeNotifier } from './likeNotifier';
-import { LikeEvent, LikeEventNotifier } from './likeNotifier';
+import { LikeEvent, LikeNotifier } from './likeNotifier';
+// import { LikeEvent, LikeEventNotifier } from './likeNotifier';
 
 export function View() {
   return (
@@ -19,7 +19,7 @@ function MainContent() {
         } = useContext(RecipesContext);
 
     useEffect(() => {
-        const LikeNotifier = new LikeEventNotifier();
+        //const LikeNotifier = new LikeEventNotifier();
         LikeNotifier.addHandler(handleServerLike);
         
         LoadRecipes();
