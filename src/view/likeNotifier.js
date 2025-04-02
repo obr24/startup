@@ -30,7 +30,7 @@ class LikeEventNotifier {
             }
         };
         this.socket.onclose = (event) => {
-            console.log("in constructor2");
+            console.log("in constructor3");
             try {
             this.receiveEvent(new EventMessage('Recipe', LikeEvent.System, { msg: 'disconnected' }));
             } catch (error) {
@@ -38,7 +38,7 @@ class LikeEventNotifier {
             }
         };
         this.socket.onmessage = async (msg) => {
-            console.log("in constructor3");
+            console.log("in constructor4");
             try {
                 const event = JSON.parse(await msg.data.text());
                 this.receiveEvent(event);
