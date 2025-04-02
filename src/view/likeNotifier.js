@@ -72,6 +72,6 @@ class LikeEventNotifier {
     }
 }
 
-//const LikeNotifier = new LikeEventNotifier();
-//export { LikeEvent, LikeNotifier };
-export { LikeEvent, LikeEventNotifier };
+const LikeNotifier = new LikeEventNotifier();
+export { LikeEvent, LikeNotifier };
+// export { LikeEvent, LikeEventNotifier };
