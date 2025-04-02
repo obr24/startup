@@ -30,7 +30,7 @@ function peerProxy(httpServer) {
       client.isAlive = false;
       client.ping();
     });
-  }, 1000);
+  }, 10000);
 }
 
 module.exports = { peerProxy };
