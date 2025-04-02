@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 
 import RecipesContext, {ProvideRecipesContext, Recipe} from '../recipes';
 import { LikeEvent, LikeNotifier } from './likeNotifier';
-// import { LikeEvent, LikeEventNotifier } from './likeNotifier';
 
 export function View() {
   return (
