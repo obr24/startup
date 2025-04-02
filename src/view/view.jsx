@@ -18,7 +18,6 @@ function MainContent() {
         } = useContext(RecipesContext);
 
     useEffect(() => {
-        //const LikeNotifier = new LikeEventNotifier();
         LikeNotifier.addHandler(handleServerLike);
         
         LoadRecipes();
